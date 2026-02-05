@@ -33,8 +33,9 @@ int main()
         }
         else
         {
-            printf("Element not found.");
+            printf(" ");
         }
     }
+    printf("Element not found.");
     return 0;
 }
