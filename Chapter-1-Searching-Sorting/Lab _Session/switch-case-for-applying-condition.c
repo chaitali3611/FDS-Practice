@@ -8,11 +8,10 @@ struct student {
 
 int main() 
 {
-    struct student s[6];   // size 6 to allow insert
+    struct student s[6];
     int i, choice, pos;
     int count = 5;
 
-    /* Step 1: Take input of 5 students */
     printf("Enter information of 5 students:\n");
     for(i = 0; i < 5; i++) 
     {
@@ -22,15 +21,14 @@ int main()
         scanf("%s", s[i].name);
     }
 
-    /* Step 2: Apply operations using FOR loop */
     for(i = 0; i < 10; i++) 
     {
 
-        printf("\n----- MENU -----");
         printf("\n1. Insert Student");
         printf("\n2. Update Student");
         printf("\n3. Delete Student");
         printf("\n4. Display Students");
+        
         printf("\nEnter your choice: ");
         scanf("%d", &choice);
 

@@ -7,11 +7,10 @@ struct student {
 
 int main() 
 {
-    struct student s[6];   // size 6 to allow insert
+    struct student s[6];
     int i, choice, pos;
     int count = 5;
 
-    /* Step 1: Take input of 5 students */
     printf("Enter information of 5 students:\n");
     for(i = 0; i < 5; i++) 
     {
@@ -21,18 +20,17 @@ int main()
         scanf("%s", s[i].name);
     }
 
-    /* Step 2: Menu (runs only once) */
-    printf("\n----- MENU -----");
     printf("\n1. Insert Student");
     printf("\n2. Update Student");
     printf("\n3. Delete Student");
     printf("\n4. Display Students");
+
     printf("\nEnter your choice: ");
     scanf("%d", &choice);
 
     switch(choice) 
     {
-        case 1:   // INSERT
+        case 1:    //INSERT
             if(count < 6) 
             {
                 printf("Enter position to insert (1 to %d): ", count + 1);
@@ -107,8 +105,7 @@ int main()
             printf("Invalid choice.\n");
     }
 
-    /* Display updated records at the end */
-    printf("\n--- Updated Student List ---\n");
+    printf("\nUpdated Student List\n");
     for(i = 0; i < count; i++) 
     {
         printf("ID: %d  Name: %s\n", s[i].id, s[i].name);
