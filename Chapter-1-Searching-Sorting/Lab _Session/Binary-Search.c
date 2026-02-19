@@ -19,10 +19,6 @@ int main()
     printf("Enter the key element: ");
     scanf("%d", &key);
 
-
-
-
-
     high = n - 1;
 
     while(low <= high)
