@@ -36,16 +36,62 @@ int main()
         switch(choice)
         {
             case 1:
-            printf("\nIt's Insertion.");
-            printf("\nEnter position for insertion (0-9): ");
-            scanf("%d", &pos);
+            {
+                printf("\nIt's Insertion.");
+                printf("\nEnter position for insertion (0-9): ");
+                scanf("%d", &pos);
 
-            if(pos)
-            break;
+                if(pos >= 1 && pos < 10)
+                {
+                    for(i = count; i > pos; i--)
+                    {
+                        s[i] = s[i-1];
+                        printf("\nEnter roll no: ");
+                        scanf("%d", &s[i].rn);
+                        printf("\nEnter name: ");
+                        scanf("%s", s[i].name);
+                        printf("\nStudent inserted successfully.");
+
+                        count++;
+                    }
+                }
+
+                else
+                {
+                    printf("\nInvalid position.");
+                }
+                
+                break;
+            }
 
             case 2:
-            printf("\nIt's Deletion.");
-            break;
+            {
+                printf("\nIt's Deletion.");
+
+                int roll;
+                printf("\nEnter roll number for deletion: ");
+                scanf("%d", &roll);
+
+                for(i = 0; i<count; i++)
+                {
+                    if(roll == s[i].rn)
+                    {
+                        for(j=i; j< count; j++)
+                        {
+                            s[i] = s[i+1];
+                            count++;
+
+                            printf("\nStudent deleted successfully.");
+                        }
+                    }
+
+                    else
+                    {
+                        printf("\nInvalid roll number.");
+                    }
+                }
+                break;
+            }
 
             case 3:
             printf("\nIt's Updation.");
@@ -53,6 +99,12 @@ int main()
 
             case 4:
             printf("\nIt's Display.");
+
+            for(i=0; i<n; i++)
+            {
+            printf("\n%s", s[i].name);
+            printf("\n%d", s[i].rn);
+            }
             break;
         }
 
