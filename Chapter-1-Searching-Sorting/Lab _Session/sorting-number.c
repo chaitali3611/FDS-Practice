@@ -1,8 +1,8 @@
 #include <stdio.h>
 int main(){
-    int temp, i;
+    int temp, i, j;
     int n;
-    printf("Enter the size of the aaray: ");
+    printf("Enter the size of the array: ");
     scanf("%d", &n);
 
     int a[n];
@@ -12,17 +12,23 @@ int main(){
         scanf("%d", &a[i]);
     }
     
-    for(int i = 0; i<n; i++){
-
-        if(a[i - 1] > a[i]){
-            temp = a[i];
-            a[i - 1] = a[i];
-            a[i-1] = temp;
+    for(int i = 0; i<n; i++)
+    {
+        for(j=0;j<n-i-1; j++)
+        {
+            if(a[j] > a[j-1])
+            {
+                temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
         }
-        
     }
     printf("Sorted array is: ");
-            printf("%d", a[i]);
+    for(i=0;i<n;i++)
+    {
+        printf("%d\t", a[i]);
+    }
 
     return 0;
 }

@@ -9,7 +9,7 @@ int main()
 {
     struct student s[10];
     
-    int i, pos, n, a, choice;
+    int i, pos, n, a, choice, count;
 
     printf("\nEnter the number of students: ");
     scanf("%d", &n);
@@ -76,7 +76,7 @@ int main()
                 {
                     if(roll == s[i].rn)
                     {
-                        for(j=i; j< count; j++)
+                        for(int j=i; j< count; j++)
                         {
                             s[i] = s[i+1];
                             count++;
