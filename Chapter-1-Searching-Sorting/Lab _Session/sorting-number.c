@@ -5,7 +5,7 @@ int main(){
     printf("Enter the size of the array: ");
     scanf("%d", &n);
 
-    int a[n];
+    int a[10];
     printf("Enter %d sorted array elements: ", n);
     
     for(int i = 0;i<n;i++){
@@ -16,7 +16,7 @@ int main(){
     {
         for(j=0;j<n-i-1; j++)
         {
-            if(a[j] > a[j-1])
+            if(a[j] > a[j+1])
             {
                 temp = a[j];
                 a[j] = a[j+1];
