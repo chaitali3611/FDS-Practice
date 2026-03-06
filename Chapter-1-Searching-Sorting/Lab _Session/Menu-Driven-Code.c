@@ -1,20 +1,21 @@
 #include<stdio.h>
+#include<string.h>
 struct student
 {
     int rn;     //roll no
-    char name;
+    char name[10];
 };
 
 int main()
 {
     struct student s[10];
     
-    int i, pos, n, a, choice, count;
+    int i, a, choice, count;
 
     printf("\nEnter the number of students: ");
-    scanf("%d", &n);
-    printf("\nEnter the student Information: ");
-    for(i=0; i<n; i++)
+    scanf("%d", &count);
+    printf("\nEnter the %d student Information: ", count);
+    for(i=0; i<count; i++)
     {
         printf("\nEnter the %d Student name: ", i+1);
         scanf("%s", &s[i].name);
@@ -38,12 +39,13 @@ int main()
             case 1:
             {
                 printf("\nIt's Insertion.");
-                printf("\nEnter position for insertion (0-9): ");
+                int pos;
+                printf("\nEnter position for insertion (1 to %d): ", i+1);
                 scanf("%d", &pos);
 
-                if(pos >= 1 && pos < 10)
+                if(pos >= 1 && pos <= count+1)
                 {
-                    for(i = count; i > pos; i--)
+                    for(i = count; i >= pos; i--)
                     {
                         s[i] = s[i-1];
                         printf("\nEnter roll no: ");
@@ -68,44 +70,77 @@ int main()
             {
                 printf("\nIt's Deletion.");
 
-                int roll;
+                int roll, j;
+                int flag = 0;
                 printf("\nEnter roll number for deletion: ");
                 scanf("%d", &roll);
 
-                for(i = 0; i<count; i++)
+                for(i = 0; i<10; i++)
                 {
                     if(roll == s[i].rn)
                     {
-                        for(int j=i; j< count; j++)
+                        for(j=i; j< count; j++)
                         {
                             s[i] = s[i+1];
-                            count++;
-
-                            printf("\nStudent deleted successfully.");
+                            count--;
                         }
+                        printf("\nStudent deleted successfully.");
+                        flag = 1;
                     }
+                }
 
-                    else
-                    {
-                        printf("\nInvalid roll number.");
-                    }
+                if(flag == 0)
+                {
+                    printf("\nInvalid roll number.");
                 }
                 break;
             }
 
             case 3:
-            printf("\nIt's Updation.");
-            break;
+            {
+                printf("\nIt's Updation.");
+                int roll;
+                int flag = 0;
+                printf("\nEnter roll no. for updation: ");
+                scanf("%d", &roll);
+
+                for(i=0; i<10; i++)
+                {
+                    if(roll == s[i].rn)
+                    {
+                        printf("\nEnter new roll no.: ");
+                        scanf("%d", &s[i].rn);
+                        printf("\nEnter new name: ");
+                        scanf("%s", s[i].name);
+                        printf("\nStudent updated successfully.");
+                        flag = 1;
+                    }
+                }
+
+                if(flag == 0)
+                {
+                    printf("\nInvalid roll no.");
+                }
+                break;
+            }
 
             case 4:
-            printf("\nIt's Display.");
-
-            for(i=0; i<n; i++)
             {
-            printf("\n%s", s[i].name);
-            printf("\n%d", s[i].rn);
+                printf("\nIt's Display.");
+
+                for(i=0; i<count; i++)
+                {
+                printf("\nName of the %d student is: %s ",i+1, s[i].name);
+                printf("\nRoll no. of the %d student is: %d",i+1, s[i].rn);
+                }
+                break;
             }
-            break;
+
+            case 5:
+            {
+                printf("\nIt's Exit.");
+                break;
+            }
         }
 
         printf("\nWhether you want to continue(1/0): ");
