@@ -1,26 +1,32 @@
 #include <stdio.h>
 int main(){
-    int a[5];
-    printf("Enter 5 array element: ");
-
-    for(int i=0; i<5; i++){
+    int n, key;
+    int a[10];
+    int flag = 0;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    
+    printf("Enter %d array element: ", n);
+    for(int i=0; i<n; i++){
         scanf("%d", &a[i]);
     }
 
-    int b;
     printf("Enter key element: ");
-    scanf("%d", &b);
+    scanf("%d", &key);
 
-    for(int i=0; i<5; i++){
-        if(b==a[i]){
-            printf("%d is available at the position of %d", b, i);
-            break;
-        }
-
-        else{
-            printf("Key element is not available.");
+    for(int i=0; i<n; i++){
+        if(key==a[i])
+        {
+            printf("%d is available at the position of %d", key, i);
+            flag = 1;
             break;
         }
     }
+
+        if(flag == 0)
+        {
+            printf("Key element is not available.");
+        }
+    
     return 0;
 }
