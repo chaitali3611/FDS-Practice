@@ -5,71 +5,71 @@
 int stack[MAX];
 int top = -1;
 
-// Push function
-void push(int x)
+// Push operation
+void push(int digit)
 {
-    if (top == MAX - 1)
+    if(top == MAX - 1)
     {
         printf("Stack Overflow\n");
-        return;
     }
-    stack[++top] = x;
+    else
+    {
+        top++;
+        stack[top] = digit;
+    }
 }
 
-// Pop function
+// Pop operation
 int pop()
 {
-    if (top == -1)
+    if(top == -1)
     {
-        printf("Stack Underflow\n");
         return -1;
     }
-    return stack[top--];
+    else
+    {
+        return stack[top--];
+    }
 }
 
 int main()
 {
-    int num, temp, digit;
-    int reversed = 0;
+    int num, temp, remainder;
+    int isPalindrome = 1;
 
     printf("Enter a number: ");
     scanf("%d", &num);
 
     temp = num;
 
-    // Special case: if number is 0
-    if (num == 0)
+    // Push all digits into stack
+    while(temp != 0)
     {
-        printf("Palindrome number\n");
-        return 0;
-    }
-
-    // Push digits into stack
-    while (temp > 0)
-    {
-        digit = temp % 10;
-        push(digit);
+        remainder = temp % 10;
+        push(remainder);
         temp = temp / 10;
     }
 
-    // Reset temp to original number
     temp = num;
 
-    // Compare digits using stack
-    while (temp > 0)
+    // Compare digits with stack (reverse order)
+    while(temp != 0)
     {
-        digit = temp % 10;
+        remainder = temp % 10;
 
-        if (digit != pop())
+        if(remainder != pop())
         {
-            printf("Not a palindrome number\n");
-            return 0;
+            isPalindrome = 0;
+            break;
         }
 
         temp = temp / 10;
     }
 
-    printf("Palindrome number\n");
+    if(isPalindrome)
+        printf("Palindrome Number\n");
+    else
+        printf("Not a Palindrome Number\n");
 
     return 0;
 }
